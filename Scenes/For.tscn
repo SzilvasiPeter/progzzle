@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scripts/For.gd" type="Script" id=1]
+[ext_resource path="res://Assets/player.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 6, 7 )
+
+[node name="For" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="ForLabel" type="Label" parent="."]
+margin_left = 208.0
+margin_top = 48.0
+margin_right = 256.0
+margin_bottom = 80.0
+text = "for"
+align = 1
+valign = 1
+
+[node name="ForNumber" type="LineEdit" parent="."]
+margin_left = 256.0
+margin_top = 48.0
+margin_right = 320.0
+margin_bottom = 80.0
+text = "20"
+align = 1
+
+[node name="TimesLabel" type="Label" parent="."]
+margin_left = 320.0
+margin_top = 48.0
+margin_right = 384.0
+margin_bottom = 80.0
+text = "times"
+align = 1
+valign = 1
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="."]
+
+[node name="Player" type="Sprite" parent="KinematicBody2D"]
+position = Vector2( 128, 48 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
+position = Vector2( 136, 56 )
+shape = SubResource( 1 )
