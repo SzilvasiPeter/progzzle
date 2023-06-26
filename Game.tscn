@@ -21,6 +21,40 @@ zoom = Vector2( 0.4, 0.4 )
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 96, 48 )
 
+[node name="Algorithm" type="Node2D" parent="."]
+
+[node name="Label" type="Label" parent="Algorithm"]
+margin_left = 184.0
+margin_top = 56.0
+margin_right = 224.0
+margin_bottom = 70.0
+rect_pivot_offset = Vector2( 128, 80 )
+text = "Move"
+
+[node name="LineEdit" type="LineEdit" parent="Algorithm"]
+margin_left = 232.0
+margin_top = 48.0
+margin_right = 290.0
+margin_bottom = 72.0
+rect_pivot_offset = Vector2( 48, 88 )
+text = "2"
+
+[node name="Button" type="Button" parent="Algorithm"]
+margin_left = 232.0
+margin_top = 128.0
+margin_right = 294.0
+margin_bottom = 148.0
+rect_pivot_offset = Vector2( 48, 40 )
+text = "Execute"
+
+[node name="DirectionList" type="ItemList" parent="Algorithm"]
+margin_left = 304.0
+margin_top = 24.0
+margin_right = 352.0
+margin_bottom = 112.0
+items = [ "Up", null, false, "Down", null, false, "Left", null, false, "Right", null, false ]
+max_columns = 4
+
 [node name="Walls" type="Node" parent="."]
 
 [node name="Wall" parent="Walls" instance=ExtResource( 1 )]
@@ -105,44 +139,34 @@ position = Vector2( 128, 112 )
 [node name="Spot2" parent="Spots" instance=ExtResource( 3 )]
 position = Vector2( 144, 96 )
 
-[node name="AcceptDialog" type="AcceptDialog" parent="."]
+[node name="GameInfo" type="Node2D" parent="."]
+
+[node name="AcceptDialog" type="AcceptDialog" parent="GameInfo"]
 margin_left = 112.0
 margin_top = 49.0
-margin_right = 222.0
+margin_right = 231.0
 margin_bottom = 107.0
 theme = SubResource( 1 )
 window_title = "Good job!"
 
-[node name="LevelLabel" type="Label" parent="."]
+[node name="LevelLabel" type="Label" parent="GameInfo"]
 margin_left = 16.0
 margin_right = 65.0
 margin_bottom = 14.0
 custom_fonts/font = ExtResource( 6 )
 text = "Level 1"
 
-[node name="MovesLabel" type="Label" parent="."]
+[node name="MovesLabel" type="Label" parent="GameInfo"]
 margin_left = 16.0
 margin_top = 16.0
-margin_right = 65.0
+margin_right = 76.0
 margin_bottom = 30.0
 custom_fonts/font = ExtResource( 6 )
 text = "Moves: 0"
 
 [node name="TODO_LevelEditor" type="Node2D" parent="."]
 
-[node name="Label" type="Label" parent="."]
-margin_left = 192.0
-margin_top = 112.0
-margin_right = 375.0
-margin_bottom = 144.0
-text = "Press \"Space\" to move down"
-align = 1
-valign = 1
+[node name="AlgoBuilder" type="Node2D" parent="."]
 
-[node name="LineEdit" type="LineEdit" parent="."]
-margin_left = 256.0
-margin_top = 48.0
-margin_right = 320.0
-margin_bottom = 80.0
-
-[connection signal="confirmed" from="AcceptDialog" to="." method="_on_AcceptDialog_confirmed"]
+[connection signal="pressed" from="Algorithm/Button" to="Player" method="_on_Button_pressed"]
+[connection signal="confirmed" from="GameInfo/AcceptDialog" to="." method="_on_AcceptDialog_confirmed"]
