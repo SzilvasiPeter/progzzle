@@ -43,16 +43,6 @@ func move(direction):
 
 
 func _on_Button_pressed():
-	var line_edit = get_parent().get_node("Algorithm/LineEdit")
-	var number_of_steps = int(line_edit.text)
-	
-	var direction_list = get_parent().get_node("Algorithm/DirectionList")
-	
-	# Get the first selected items because the single selection mode
-	var item_idx = direction_list.get_selected_items()[0]
-	var direction = directions[item_idx]
-	
-	for i in number_of_steps:
-		move(direction)
-		yield(get_tree().create_timer(0.5), "timeout")
+	# TODO: Implement the execute button
+	pass
 	
